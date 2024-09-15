@@ -40,28 +40,36 @@ export const Dropzone = () => {
 
       const file = files[0];
 
-      const resizedBlob = await resizeImage(file);
-      const base64Image = await blobToBase64(resizedBlob as Blob);
-
-      const deviceID = await getDeviceId();
-
       try {
+        // Resize the image and convert to base64
+        const resizedBlob = await resizeImage(file);
+        const base64Image = await blobToBase64(resizedBlob as Blob);
+        const deviceID = await getDeviceId();
+
+        // Log the submission data for debugging
+        console.log("Submitting receipt with the following data:", {
+          address: account,
+          deviceID,
+          image: base64Image,
+        });
+
         const response = await submitReceipt({
           address: account,
           deviceID,
           image: base64Image,
         });
 
-        console.log(response);
+        console.log("Receipt submission successful:", response);
 
         setResponse(response);
       } catch (error) {
-        alert("Error submitting receipt");
+        // Remove the alert and just log the error
+        console.error("Error submitting receipt:", error);
       } finally {
         setIsLoading(false);
       }
     },
-    [account, onOpen, setIsLoading, setResponse],
+    [account, onOpen, setIsLoading, setResponse]
   );
 
   return (
@@ -89,7 +97,7 @@ export const Dropzone = () => {
         <input {...getInputProps()} />
         <HStack>
           <ScanIcon size={120} color={"gray"} />
-          <Text>Upload to scan</Text>
+          <Text>Upload your receipt</Text>
         </HStack>
       </Box>
     </VStack>

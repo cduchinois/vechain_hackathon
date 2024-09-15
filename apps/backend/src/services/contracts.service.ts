@@ -14,6 +14,8 @@ export class ContractsService {
         await ecoEarnContract.transact.registerValidSubmission(submission.address, unitsUtils.parseUnits(REWARD_AMOUNT, 'ether'))
       ).wait();
       isSuccess = !result.reverted;
+      console.log('Submission result:', result);
+    
     } catch (error) {
       console.log('Error', error);
     }

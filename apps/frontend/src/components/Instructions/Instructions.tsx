@@ -4,18 +4,18 @@ import { Step } from "./Step";
 const Steps = [
   {
     icon: "/steps/1.svg",
-    title: "Purchase eco-friendly products",
-    description: "Buy products that are eco-friendly and sustainable.",
+    title: "Fix broken machine",
+    description: "Choose a machine, contact the owner, arrange a time and place to fix it.",
   },
   {
     icon: "/steps/2.svg",
-    title: "Upload the receipt",
-    description: "Upload your receipt and AI will verify the products.",
+    title: "Upload Proof",
+    description: "After the repair, upload an image or video of the fixed machine for validation.",
   },
   {
     icon: "/steps/3.svg",
-    title: "Earn rewards",
-    description: "Earn B3TR for purchasing eco-friendly products.",
+    title: "Earn Rewards",
+    description: "Get rewarded with B3TR tokens for fixing a machine and preventing e-waste.",
   },
 ];
 
